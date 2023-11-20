@@ -1,41 +1,31 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-
-function ContactList() {
-  const [contacts, setContacts] = useState([]);
-
-  useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users')
-      .then(response => {
-        setContacts(response.data);
-      });
-  }, []);
-
+function ContactList({ contacts, setContacts }) {
   const deleteContact = (id) => {
     setContacts(contacts.filter(contact => contact.id !== id));
   };
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Ім'я</th>
-          <th>Прізвище</th>
-          <th>Телефон</th>
-          <th>Дії</th>
-        </tr>
-      </thead>
-      <tbody>
-        {contacts.map(contact => (
-          <tr key={contact.id}>
-            <td>{contact.name}</td>
-            <td>{contact.username}</td>
-            <td>{contact.phone}</td>
-            <td><button onClick={() => deleteContact(contact.id)}>Видалити</button></td>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Edit</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {contacts.map(contact => (
+            <tr key={contact.id}>
+              <td>{contact.name}</td>
+              <td>{contact.username}</td>
+              <td>{contact.phone}</td>
+              <td><button className="btn-delete" onClick={() => deleteContact(contact.id)}>X</button></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

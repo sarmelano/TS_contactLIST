@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 function Navbar() {
   return (
     <nav>
-      <Link to="/">Список контактів</Link>
-      <Link to="/add">Додати контакт</Link>
+      <Link to="/">Contacts</Link>
+      <Link to="/add">+</Link>
     </nav>
   );
 }

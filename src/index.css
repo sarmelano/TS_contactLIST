@@ -2,20 +2,31 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: rgba(137, 63, 150, 0.075);
 }
 
 nav {
   background-color: #333;
   color: #fff;
-  padding: 10px 0;
-  text-align: center;
+  padding: 10px 130px 10px 0;
+  text-align: end;
 }
 
 nav a {
-  color: #fff;
+  display: inline-block;
+  color: black;
+  font-weight: 600;
+  font-size: 18px;
+  background-color: orangered;
   margin: 0 10px;
   text-decoration: none;
+  padding: 8px 13px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: rgb(255, 68, 0, 0.7)
 }
 
 table {
@@ -24,13 +35,32 @@ table {
   border-collapse: collapse;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #ddd;
+  margin: 20px auto;
+  width: 70vw;
 }
 
-th, td {
+th,
+td {
+  width: min-content;
   padding: 10px;
-  text-align: left;
+  text-align: center;
+}
+
+.btn-delete {
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.042);
+  transition: background-color 0.1s;
+  border: 1px solid black;
+  padding: 3px 6px;
+}
+
+.btn-delete:hover {
+  background-color: rgba(255, 0, 0, 0.342);
 }
 
 form {
@@ -51,21 +81,22 @@ form button {
   cursor: pointer;
 }
 
- form button[type="button"] {
+form button[type="button"] {
   border: 1px solid black;
   border-radius: 12px;
-} 
+  transition: background-color 0.3s;
+}
 
 form button[type="button"]:hover {
   background-color: rgba(0, 128, 0, 0.4);
-} 
+}
 
 form button[type="button"]:last-child:hover {
   background-color: rgba(255, 0, 0, 0.4);
-} 
+}
 
 .addContact {
-margin: 150px auto;
+  margin: 150px auto;
   width: 250px;
 }
 
