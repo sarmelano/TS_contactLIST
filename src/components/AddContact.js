@@ -17,11 +17,14 @@ function AddContact({ onAdd }) {
       username: Yup.string()
         .required('Please fill out the field'),
       phone: Yup.string()
+        .matches(/^\d+$/, "Should contain only digits")
         .required('Please fill out the field'),
     }),
     onSubmit: values => {
-      onAdd(values);
-      navigate('/');
+      if (formik.isValid) {
+        onAdd(values);
+        navigate('/');
+      }
     },
   });
 
@@ -32,28 +35,31 @@ function AddContact({ onAdd }) {
         name="name" 
         value={formik.values.name} 
         onChange={formik.handleChange} 
+        onBlur={formik.handleBlur}
         placeholder="First Name" 
         autoComplete="name" 
       />
-      {formik.errors.name ? <div>{formik.errors.name}</div> : null}
+      {formik.touched.name && formik.errors.name ? <div className='error'>{formik.errors.name}</div> : null}
       <input 
         type="text" 
         name="username" 
         value={formik.values.username} 
         onChange={formik.handleChange} 
+        onBlur={formik.handleBlur}
         placeholder="Last Name" 
         autoComplete="username" 
       />
-      {formik.errors.username ? <div>{formik.errors.username}</div> : null}
+      {formik.touched.username && formik.errors.username ? <div className='error'>{formik.errors.username}</div> : null}
       <input 
         type="text" 
         name="phone" 
         value={formik.values.phone} 
         onChange={formik.handleChange} 
+        onBlur={formik.handleBlur}
         placeholder="Phone number" 
         autoComplete="tel" 
       />
-      {formik.errors.phone ? <div>{formik.errors.phone}</div> : null}
+      {formik.touched.phone && formik.errors.phone ? <div className='error'>{formik.errors.phone}</div> : null}
       <div className='addBtns'>
         <button type="submit">Save contact</button>
         <button className='addBtnLast' type="button" onClick={() => navigate('/')}>Cancel</button>

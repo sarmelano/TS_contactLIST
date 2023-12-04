@@ -81,17 +81,17 @@ form button {
   cursor: pointer;
 }
 
-form button[type="button"] {
+form button[type="button"], form button[type="submit"] {
   border: 1px solid black;
   border-radius: 12px;
   transition: background-color 0.3s;
 }
 
-form button[type="button"]:hover {
+form button[type="submit"]:hover {
   background-color: rgba(0, 128, 0, 0.4);
 }
 
-form button[type="button"]:last-child:hover {
+form button[type="button"]:hover {
   background-color: rgba(255, 0, 0, 0.4);
 }
 
@@ -103,4 +103,8 @@ form button[type="button"]:last-child:hover {
 .addBtns {
   display: flex;
   justify-content: space-between;
+}
+
+.error {
+  color: red;
 }
