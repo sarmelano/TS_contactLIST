@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   const addContact = (newContact) => {
-    newContact.id = Date.now(); // Генерируем уникальный id для нового контакта
+    newContact.id = Date.now(); // Generate unic ID for new contact
     setContacts([...contacts, newContact]);
   };
 

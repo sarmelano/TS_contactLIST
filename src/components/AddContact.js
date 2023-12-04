@@ -13,11 +13,11 @@ function AddContact({ onAdd }) {
     },
     validationSchema: Yup.object({
       name: Yup.string()
-        .required('Пожалуйста, заполните это поле'),
+        .required('Please fill out the field'),
       username: Yup.string()
-        .required('Пожалуйста, заполните это поле'),
+        .required('Please fill out the field'),
       phone: Yup.string()
-        .required('Пожалуйста, заполните это поле'),
+        .required('Please fill out the field'),
     }),
     onSubmit: values => {
       onAdd(values);
