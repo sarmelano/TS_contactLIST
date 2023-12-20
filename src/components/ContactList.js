@@ -1,16 +1,14 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact } from '../store/contactsSlice';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import './modal.css';
 
-
-function ContactList({ contacts, setContacts }) {
+function ContactList() {
+  const contacts = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const [contactToDelete, setContactToDelete] = useState(null);
-
-  const deleteContact = (id) => {
-    setContacts(contacts.filter(contact => contact.id !== id));
-    setModalOpen(false);
-  };
 
   const openModal = (id) => {
     setContactToDelete(id);
@@ -21,11 +19,16 @@ function ContactList({ contacts, setContacts }) {
     setModalOpen(false);
   };
 
+  const handleDelete = () => {
+    dispatch(deleteContact(contactToDelete));
+    setModalOpen(false);
+  };
+
   return (
     <div>
       <DeleteConfirmationModal
         isOpen={modalOpen}
-        onConfirm={() => deleteContact(contactToDelete)}
+        onConfirm={handleDelete}
         onCancel={closeModal}
       />
       <table>

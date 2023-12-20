@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../store/contactsSlice';
 
-function AddContact({ onAdd }) {
+function AddContact() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -12,19 +15,13 @@ function AddContact({ onAdd }) {
       phone: ''
     },
     validationSchema: Yup.object({
-      name: Yup.string()
-        .required('Please fill out the field'),
-      username: Yup.string()
-        .required('Please fill out the field'),
-      phone: Yup.string()
-        .matches(/^\d+$/, "Should contain only digits")
-        .required('Please fill out the field'),
+      name: Yup.string().required('Please fill out the field'),
+      username: Yup.string().required('Please fill out the field'),
+      phone: Yup.string().matches(/^\d+$/, "Should contain only digits").required('Please fill out the field'),
     }),
-    onSubmit: values => {
-      if (formik.isValid) {
-        onAdd(values);
-        navigate('/');
-      }
+    onSubmit: (values) => {
+      dispatch(addContact(values));
+      navigate('/');
     },
   });
 

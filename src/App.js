@@ -1,32 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ContactList from './components/ContactList';
 import AddContact from './components/AddContact';
-import './index.css'
+import { addContact } from './store/contactsSlice';
+import './index.css';
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios.get('https://jsonplaceholder.typicode.com/users')
       .then(response => {
-        setContacts(response.data);
+        response.data.forEach(user => {
+          dispatch(addContact({ name: user.name, username: user.username, phone: user.phone }));
+        });
       });
-  }, []);
-
-  const addContact = (newContact) => {
-    newContact.id = Date.now(); // Generate unic ID for new contact
-    setContacts([...contacts, newContact]);
-  };
+  }, [dispatch]);
 
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/add" element={<AddContact onAdd={addContact} />} />
-        <Route path="/" element={<ContactList contacts={contacts} setContacts={setContacts} />} />
+        <Route path="/add" element={<AddContact />} />
+        <Route path="/" element={<ContactList />} />
       </Routes>
     </Router>
   );
