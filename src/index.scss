@@ -1,0 +1,122 @@
+$body-bg-color: rgba(137, 63, 150, 0.075);
+$nav-bg-color: #333;
+$nav-text-color: #fff;
+$link-bg-color: orangered;
+$link-hover-color: rgba(255, 68, 0, 0.7);
+
+$btn-delete-bg-color: rgba(255, 0, 0, 0.042);
+$btn-delete-hover-color: rgba(255, 0, 0, 0.342);
+
+$form-btn-border-color: black;
+$form-btn-border-radius: 12px;
+
+  $submit: rgba(0, 128, 0, 0.4);
+  $button: rgba(255, 0, 0, 0.4);
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $body-bg-color;
+}
+
+nav {
+  background-color: $nav-bg-color;
+  color: $nav-text-color;
+  padding: 1% 5% 1% 0;
+  text-align: end;
+
+  a {
+    display: inline-block;
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: $link-bg-color;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 8px 13px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $link-hover-color;
+    }
+  }
+}
+
+table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    width: 70vw;
+  }
+
+  th,
+  td {
+    width: min-content;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.btn-delete {
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: $btn-delete-bg-color;
+  transition: background-color 0.1s;
+  border: 1px solid black;
+  padding: 3px 6px;
+
+  &:hover {
+    background-color: $btn-delete-hover-color;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+
+  input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid $form-btn-border-color;
+    border-radius: $form-btn-border-radius;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $submit;
+    }
+
+    &[type="button"]:hover {
+      background-color: $button;
+    }
+  }
+}
+
+.addContact {
+  margin: 150px auto;
+  width: 250px;
+}
+
+.addBtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error {
+  color: red;
+}

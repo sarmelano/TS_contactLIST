@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import ContactList from './components/ContactList';
 import AddContact from './components/AddContact';
 import { addContact } from './store/contactsSlice';
-import './index.css';
+import './index.scss';
 
 function App() {
   const dispatch = useDispatch();

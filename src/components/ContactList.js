@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../store/contactsSlice';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
-import './modal.css';
+import './modal.scss';
 
 function ContactList() {
   const contacts = useSelector(state => state.contacts);
