@@ -1,4 +1,10 @@
-function DeleteConfirmationModal({ isOpen, onConfirm, onCancel }) {
+interface DeleteConfirmationModalProps {
+  isOpen: boolean;
+  onConfirm: () => void;
+  onCancel: () => void;
+}
+
+const DeleteConfirmationModal: React.FC<DeleteConfirmationModalProps> = ({ isOpen, onConfirm, onCancel }) => {
   if (!isOpen) {
     return null;
   }

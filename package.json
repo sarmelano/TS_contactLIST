@@ -44,5 +44,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@types/react-redux": "^7.1.33",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/uuid": "^9.0.7",
+    "@types/yup": "^0.32.0"
   }
 }

@@ -3,14 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../store/contactsSlice';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import './modal.scss';
+import { RootState } from '../store/store';
 
-function ContactList() {
-  const contacts = useSelector(state => state.contacts);
+const ContactList: React.FC = () => {
+  const contacts = useSelector((state: RootState) => state.contacts);
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
-  const [contactToDelete, setContactToDelete] = useState(null);
+  const [contactToDelete, setContactToDelete] = useState<string | null>(null);
 
-  const openModal = (id) => {
+  const openModal = (id: string) => {
     setContactToDelete(id);
     setModalOpen(true);
   };
@@ -20,8 +21,10 @@ function ContactList() {
   };
 
   const handleDelete = () => {
-    dispatch(deleteContact(contactToDelete));
-    setModalOpen(false);
+    if (contactToDelete) {
+      dispatch(deleteContact(contactToDelete));
+      setModalOpen(false);
+    }
   };
 
   return (

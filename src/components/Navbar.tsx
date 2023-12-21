@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+const Navbar: React.FC = () => {
   return (
     <nav>
       <Link to="/">Contacts</Link>
-      <Link to="/add">+</Link>
+      <Link to="/add"> + </Link>
     </nav>
   );
 }

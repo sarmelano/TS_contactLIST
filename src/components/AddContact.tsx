@@ -4,11 +4,17 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../store/contactsSlice';
 
-function AddContact() {
+interface FormValues {
+  name: string;
+  username: string;
+  phone: string;
+}
+
+const AddContact: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const formik = useFormik({
+  const formik = useFormik<FormValues>({
     initialValues: {
       name: '',
       username: '',
